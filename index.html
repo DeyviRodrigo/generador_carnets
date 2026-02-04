@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>ID Generator & Print Center</title>
+  <title>Generador de carnets - DAITEC INGENIERIA Y CONSULTORIA S.A.C.</title>
   <link rel="stylesheet" href="styles/app.css" />
   <link rel="stylesheet" href="styles/print.css" media="print" />
 
@@ -18,13 +18,13 @@
   <div class="brand">
     <div class="app-icon">🪪</div>
     <div>
-      <div class="title">ID Generator & Print Center</div>
-      <div class="subtitle">No Data Stored</div>
+      <div class="title">Generador de carnets</div>
+      <div class="subtitle">DAITEC INGENIERIA Y CONSULTORIA S.A.C.</div>
     </div>
   </div>
 
   <div class="top-actions">
-    <button class="chip" type="button" id="btnPrivacy">Privacy Policy</button>
+    <button class="chip" type="button" id="btnPrivacy">Política de privacidad</button>
   </div>
 </header>
 
@@ -34,23 +34,23 @@
   <section class="card">
     <div class="card-row">
       <div class="card-left">
-        <div class="step-title">Step 1: Get the Template</div>
+        <div class="step-title">Paso 1: Descarga la plantilla</div>
         <div class="step-desc">
-          Descarga el Excel formateado (.xlsx) para que tus datos se importen sin errores.
+          Descarga el Excel formateado (.xlsx) con las columnas: id, dni, cargo, nombre_completo.
         </div>
       </div>
-      <a class="btn primary" href="assets/template.xlsx" download>Download Template</a>
+      <button class="btn primary" type="button" id="btnDownloadTemplate">Descargar plantilla</button>
     </div>
   </section>
 
   <!-- STEP 2 -->
   <section class="card">
-    <div class="step-title">Step 2: Upload Staff Data</div>
+    <div class="step-title">Paso 2: Sube los datos del personal</div>
     <div class="dropzone" id="dropzone">
       <div class="dz-icon">☁️⬆️</div>
       <div class="dz-title">Arrastra y suelta tu Excel aquí</div>
       <div class="dz-sub">o haz clic para buscar archivos (xlsx). Recomendado &lt; 5MB.</div>
-      <button class="btn" type="button" id="btnSelect">Select File</button>
+      <button class="btn" type="button" id="btnSelect">Seleccionar archivo</button>
       <input type="file" id="fileInput" accept=".xlsx" hidden />
       <div class="dz-meta" id="fileMeta"></div>
       <div class="dz-error" id="fileError"></div>
@@ -60,8 +60,10 @@
   <!-- STEP 3 -->
   <section class="card">
     <div class="card-row card-row-top">
-      <div class="step-title">Step 3: Select ID Card Design</div>
-      <div class="muted" id="tplCount">4 templates available</div>
+      <div class="step-title">Paso 3: Selecciona el diseño del carnet</div>
+      <div class="muted" id="tplCount">
+        Puedes subir tus archivos CSS con modelos de carnet para sobreescribir estos diseños.
+      </div>
     </div>
 
     <div class="tpl-grid" id="tplGrid">
@@ -73,10 +75,10 @@
   <section class="card">
     <div class="center">
       <button class="btn primary big" id="btnGenerate" type="button" disabled>
-        Generate PDF & Print
+        Generar PDF e imprimir
       </button>
       <p class="muted small">
-        Security Notice: tus datos se procesan localmente en tu navegador. No se almacenan.
+        Aviso de seguridad: tus datos se procesan localmente en tu navegador. No se almacenan.
       </p>
     </div>
   </section>
@@ -84,7 +86,7 @@
   <!-- PREVIEW -->
   <section class="card">
     <div class="card-row card-row-top">
-      <div class="step-title">Preview</div>
+      <div class="step-title">Vista previa</div>
       <div class="muted" id="previewMeta">Sube un Excel para ver la vista previa</div>
     </div>
 

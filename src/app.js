@@ -2,8 +2,7 @@
 let uploadedRows = [];
 let selectedTemplateId = "corporate_landscape"; // default
 
-const REQUIRED_HEADERS = ["DNI", "NombreCompleto", "Cargo", "Código QR"];
-// Nota: en JS lo transformamos a QR_URL
+const REQUIRED_HEADERS = ["id", "dni", "cargo", "nombre_completo"];
 
 const elDrop = document.getElementById("dropzone");
 const elFile = document.getElementById("fileInput");
@@ -18,12 +17,14 @@ const elPreviewMeta = document.getElementById("previewMeta");
 
 const elBtnGenerate = document.getElementById("btnGenerate");
 const printRoot = document.getElementById("printRoot");
+const elBtnDownloadTemplate = document.getElementById("btnDownloadTemplate");
 
 initTemplatesUI();
 wireDropzone();
 wireButtons();
 
 function wireButtons(){
+  elBtnDownloadTemplate?.addEventListener("click", () => downloadTemplate());
   elBtnSelect.addEventListener("click", () => elFile.click());
   elFile.addEventListener("change", async (e) => {
     const f = e.target.files?.[0];
@@ -35,6 +36,16 @@ function wireButtons(){
     buildPrintPages(uploadedRows, selectedTemplateId);
     window.print(); // el usuario elige "Guardar como PDF" o imprime
   });
+}
+
+function downloadTemplate(){
+  const headers = ["id", "dni", "cargo", "nombre_completo"];
+  const example = [1, "73445791", "Monitorista", "Eliseo Quenallata Sancho"];
+  const data = [headers, example];
+  const ws = XLSX.utils.aoa_to_sheet(data);
+  const wb = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb, ws, "Plantilla");
+  XLSX.writeFile(wb, "template.xlsx");
 }
 
 function wireDropzone(){
@@ -97,19 +108,19 @@ function normalizeRows(rows){
   const norm = [];
 
   for (const r of rows){
-    const DNI = r.DNI ?? r.dni ?? "";
-    const NombreCompleto = r.NombreCompleto ?? r.Nombre ?? r["Nombre Completo"] ?? "";
-    const Cargo = r.Cargo ?? r.cargo ?? "";
-    const QR_URL = r["Código QR"] ?? r.QR ?? r.QR_URL ?? "";
+    const DNI = r.dni ?? r.DNI ?? "";
+    const NombreCompleto = r.nombre_completo ?? r.NombreCompleto ?? r.Nombre ?? r["Nombre Completo"] ?? "";
+    const Cargo = r.cargo ?? r.Cargo ?? "";
 
     // mínimas validaciones
     if (!DNI || !NombreCompleto || !Cargo) continue;
 
+    const cleanedDni = String(DNI).trim();
     norm.push({
-      DNI: String(DNI).trim(),
+      DNI: cleanedDni,
       NombreCompleto: String(NombreCompleto).trim(),
       Cargo: String(Cargo).trim(),
-      QR_URL: String(QR_URL).trim() || `https://quickchart.io/qr?text=${encodeURIComponent(String(DNI).trim())}`,
+      QR_URL: `https://quickchart.io/qr?text=${encodeURIComponent(cleanedDni)}`,
       Zona: r.Zona ?? r.zona ?? "",
     });
   }
@@ -118,7 +129,7 @@ function normalizeRows(rows){
 }
 
 function initTemplatesUI(){
-  elTplCount.textContent = `${window.TEMPLATES.length} templates available`;
+  elTplCount.textContent = `${window.TEMPLATES.length} plantillas disponibles. Puedes subir tus archivos CSS con modelos de carnet para sobreescribir estos diseños.`;
   elTplGrid.innerHTML = window.TEMPLATES.map(t => templateCard(t)).join("");
 
   // seleccionar default

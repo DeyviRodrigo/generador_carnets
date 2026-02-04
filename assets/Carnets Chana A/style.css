@@ -1,0 +1,163 @@
+.iphone {
+  background-color: #e4dede;
+  width: 321px; 
+  height: 216px;
+  position: relative;
+  margin: 20px auto; 
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.iphone .line {
+  top: 20px;
+  position: absolute;
+  left: 30px;
+  width: 281px;
+  height: 5px;
+  object-fit: cover;
+}
+
+.iphone .polygon {
+  position: absolute;
+  top: 8px;
+  left: 82px;
+  width: 78px;
+  height: 75px;
+}
+
+.iphone .vector {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  z-index: 0;
+}
+
+.iphone .frame {
+  display: flex;
+  flex-direction: column;
+  width: 156px;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 19px;
+  position: absolute;
+  top: 97px;
+  left: 15px;
+}
+
+.iphone .div {
+  display: flex;
+  flex-direction: column;
+  width: 115px;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  position: relative;
+}
+
+.iphone .text-wrapper,
+.iphone .text-wrapper-2 {
+  display: flex;
+  justify-content: center;
+  font-family: "Graduate-Regular", Helvetica;
+  font-weight: 400;
+  color: #e4dd97;
+  font-size: 12px;
+  text-align: center;
+}
+
+.iphone .CONTRUYENDO-MINERIA {
+  display: flex;
+  justify-content: center;
+  font-family: "Graduate-Regular", Helvetica;
+  font-weight: 400;
+  color: #fae05e;
+  font-size: 12px;
+  text-align: center;
+}
+
+.iphone .img {
+  position: absolute;
+  top: 197px;
+  left: 30px;
+  width: 281px;
+  height: 5px;
+}
+
+.iphone .logo {
+  position: absolute;
+  top: 37px;
+  left: 24px;
+  width: 81px;
+  height: 41px;
+}
+
+ /* ===================== */
+ /* QR AJUSTADO PERFECTO */
+ /* ===================== */
+
+.iphone .qr {
+  position: absolute;
+  top: 105px;     /* BAJA un poco */
+  left: 225px;    /* Alineado al centro derecho */
+  width: 72px;
+  height: 72px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #ffffff;
+  padding: 4px;
+  border-radius: 6px;
+}
+
+.iphone .qr canvas,
+.iphone .qr img {
+  width: 100%;
+  height: 100%;
+}
+
+ /* ===================== */
+
+.iphone .frame-2 {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  position: absolute;
+  top: 44px;
+  left: 130px;
+}
+
+.iphone .frame-3 {
+  display: flex;
+  flex-direction: column;
+  width: 54px;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.iphone .text-wrapper-3,
+.iphone .text-wrapper-4 {
+  font-family: "Graduate-Regular", Helvetica;
+  font-size: 10px;
+  color: #000;
+  text-align: right;
+}
+
+.iphone .frame-4 {
+  display: flex;
+  flex-direction: column;
+  width: 114px;
+  gap: 10px;
+}
+
+.iphone .nombre-completo,
+.iphone .text-wrapper-5 {
+  font-family: "Graduate-Regular", Helvetica;
+  font-size: 10px;
+  color: #000;
+}

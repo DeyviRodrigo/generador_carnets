@@ -1,18 +1,31 @@
+/* styles/carnet.css
+   Carnet CR80 (85.6mm x 54mm) con escalado para pantalla.
+   - Quita el caption bajo el logo (si aún existe en HTML, lo oculta).
+   - Letras más pequeñas.
+   - Carnet más grande en pantalla vía --scale.
+*/
+
 :root{
+    /* Tamaño real del carnet (CR80) */
     --w: 85.6mm;
     --h: 54mm;
 
+    /* Escala para pantalla (1 = tamaño real). Sube a 1.2 / 1.3 para ver más grande */
+    --scale: 1.30;
+
+    /* Colores */
     --azul: #0f3f64;
     --gris: #e6eaee;
     --dorado: #f2d36b;
     --texto: #0f3f64;
     --borde: #0f3f64;
 
-    --fs-label: 3.5mm;
-    --fs-value: 3.3mm;
-    --fs-title: 4.0mm;
-    --fs-subtitle: 3.1mm;
-    --fs-caption: 2.2mm;
+    /* Tipografías (más pequeñas) */
+    --fs-label: 3.1mm;
+    --fs-value: 2.9mm;
+    --fs-title: 3.5mm;
+    --fs-subtitle: 2.7mm;
+    --fs-caption: 2.1mm;
 }
 
 *{ box-sizing: border-box; }
@@ -41,125 +54,138 @@ body{
     min-height: 120px;
 }
 
-/* ---------- CARD ---------- */
+/* ---------------- CARD ---------------- */
 .card{
-    width: var(--w);
-    height: var(--h);
+    width: calc(var(--w) * var(--scale));
+    height: calc(var(--h) * var(--scale));
+
     display: grid;
-    grid-template-columns: 34mm 1fr;
-    border-radius: 4mm;
+    grid-template-columns: calc(34mm * var(--scale)) 1fr;
+
+    border-radius: calc(4mm * var(--scale));
     overflow: hidden;
-    border: 0.6mm solid var(--borde);
+    border: calc(0.6mm * var(--scale)) solid var(--borde);
     background: var(--gris);
 }
 
 .left{
     background: var(--azul);
-    padding: 4mm 3mm;
+
+    padding: calc(4mm * var(--scale)) calc(3mm * var(--scale));
     display: flex;
     flex-direction: column;
-    gap: 3mm;
+    gap: calc(3mm * var(--scale));
+
     clip-path: polygon(0 0, 100% 0, 78% 50%, 100% 100%, 0 100%);
 }
 
-/* Logo: sin caja blanca; fondo suave */
+/* Logo box */
 .logo-box{
-    border-radius: 2mm;
-    padding: 2mm;
+    border-radius: calc(2mm * var(--scale));
+    padding: calc(2mm * var(--scale));
     text-align: center;
+
     background: rgba(255,255,255,0.10);
-    border: 0.35mm solid rgba(255,255,255,0.20);
+    border: calc(0.35mm * var(--scale)) solid rgba(255,255,255,0.20);
 }
 
 .logo{
     width: 100%;
-    height: 12mm;
+    height: calc(12mm * var(--scale));
     object-fit: contain;
     display: block;
-    filter: drop-shadow(0 0.25mm 0.25mm rgba(0,0,0,0.25));
+    filter: drop-shadow(0 calc(0.25mm * var(--scale)) calc(0.25mm * var(--scale)) rgba(0,0,0,0.25));
 }
 
+/* Si el caption sigue existiendo en el HTML, lo ocultamos */
 .logo-caption{
-    margin-top: 1mm;
-    font-size: var(--fs-caption);
-    color: rgba(255,255,255,0.90);
-    font-weight: 700;
+    display: none;
 }
 
+/* Texto izquierdo */
 .title{
     color: var(--dorado);
     font-weight: 800;
-    font-size: var(--fs-title);
+    font-size: calc(var(--fs-title) * var(--scale));
     line-height: 1.05;
 }
-.title-strong{ letter-spacing: 0.35mm; }
+
+.title-strong{
+    letter-spacing: calc(0.35mm * var(--scale));
+}
 
 .subtitle{
     margin-top: auto;
     color: var(--dorado);
     font-weight: 800;
-    font-size: var(--fs-subtitle);
+    font-size: calc(var(--fs-subtitle) * var(--scale));
     line-height: 1.1;
 }
 
+/* Derecha */
 .right{
     position: relative;
-    padding: 4mm 4mm 3.5mm 6mm;
+    padding: calc(4mm * var(--scale)) calc(4mm * var(--scale)) calc(3.5mm * var(--scale)) calc(6mm * var(--scale));
     color: var(--texto);
 }
 
 .top-line, .bottom-line{
     position: absolute;
-    left: 6mm;
-    right: 4mm;
-    height: 0.6mm;
+    left: calc(6mm * var(--scale));
+    right: calc(4mm * var(--scale));
+
+    height: calc(0.6mm * var(--scale));
     background: var(--borde);
-    border-radius: 99px;
+    border-radius: 999px;
     opacity: 0.9;
 }
-.top-line{ top: 3mm; }
-.bottom-line{ bottom: 3mm; }
+
+.top-line{ top: calc(3mm * var(--scale)); }
+.bottom-line{ bottom: calc(3mm * var(--scale)); }
 
 .fields{
-    margin-top: 5mm;
+    margin-top: calc(5mm * var(--scale));
     display: grid;
-    gap: 2.6mm;
+    gap: calc(2.6mm * var(--scale));
 }
 
 .row{
     display: grid;
-    grid-template-columns: 16mm 1fr;
-    column-gap: 2mm;
+    grid-template-columns: calc(16mm * var(--scale)) 1fr;
+    column-gap: calc(2mm * var(--scale));
     align-items: start;
 }
 
 .label{
-    font-size: var(--fs-label);
+    font-size: calc(var(--fs-label) * var(--scale));
     font-weight: 800;
-    letter-spacing: 0.15mm;
+    letter-spacing: calc(0.15mm * var(--scale));
 }
 
-/* Valores en 2 líneas máximo */
 .value{
-    font-size: var(--fs-value);
+    font-size: calc(var(--fs-value) * var(--scale));
     font-weight: 700;
     line-height: 1.1;
+
     overflow: hidden;
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 2;         /* máximo 2 líneas */
     -webkit-box-orient: vertical;
 }
 
+/* QR */
 .qr-wrap{
     position: absolute;
-    right: 5mm;
-    bottom: 7mm;
-    width: 18mm;
-    height: 18mm;
+    right: calc(5mm * var(--scale));
+    bottom: calc(7mm * var(--scale));
+
+    width: calc(18mm * var(--scale));
+    height: calc(18mm * var(--scale));
+
     background: #fff;
-    border-radius: 2mm;
-    padding: 1.5mm;
-    border: 0.4mm solid rgba(15,63,100,0.25);
+    border-radius: calc(2mm * var(--scale));
+    padding: calc(1.5mm * var(--scale));
+    border: calc(0.4mm * var(--scale)) solid rgba(15,63,100,0.25);
 }
 
 .qr{
@@ -169,7 +195,13 @@ body{
     display: block;
 }
 
+/* ---------------- PRINT ----------------
+   Para imprimir a tamaño real CR80:
+   - forzamos --scale: 1 en impresión
+*/
 @media print{
+    :root{ --scale: 1; }
+
     body{ background:#fff; padding:0; }
     .toolbar{ display:none; }
     .sheet{ border:none; padding:0; gap:0; }

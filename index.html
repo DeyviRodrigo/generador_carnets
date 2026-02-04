@@ -3,21 +3,99 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Generador de Carnets (Demo)</title>
+  <title>ID Generator & Print Center</title>
+  <link rel="stylesheet" href="styles/app.css" />
+  <link rel="stylesheet" href="styles/print.css" media="print" />
 
-  <!-- OJO: debe existir /styles/carnet.css -->
-  <link rel="stylesheet" href="styles/carnet.css" />
+  <!-- SheetJS para leer XLSX (solo navegador) -->
+  <script defer src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+
+  <script defer src="src/templates.js"></script>
+  <script defer src="src/app.js"></script>
 </head>
 <body>
-<div class="toolbar">
-  <button id="btnRender" type="button">Renderizar</button>
-  <button id="btnPrint" type="button">Imprimir / Guardar PDF</button>
-</div>
+<header class="topbar">
+  <div class="brand">
+    <div class="app-icon">🪪</div>
+    <div>
+      <div class="title">ID Generator & Print Center</div>
+      <div class="subtitle">No Data Stored</div>
+    </div>
+  </div>
 
-<div id="out" class="sheet"></div>
+  <div class="top-actions">
+    <button class="chip" type="button" id="btnPrivacy">Privacy Policy</button>
+  </div>
+</header>
 
-<!-- OJO: primero template.js, luego main.js -->
-<script src="src/template.js"></script>
-<script src="src/main.js"></script>
+<main class="container">
+
+  <!-- STEP 1 -->
+  <section class="card">
+    <div class="card-row">
+      <div class="card-left">
+        <div class="step-title">Step 1: Get the Template</div>
+        <div class="step-desc">
+          Descarga el Excel formateado (.xlsx) para que tus datos se importen sin errores.
+        </div>
+      </div>
+      <a class="btn primary" href="assets/template.xlsx" download>Download Template</a>
+    </div>
+  </section>
+
+  <!-- STEP 2 -->
+  <section class="card">
+    <div class="step-title">Step 2: Upload Staff Data</div>
+    <div class="dropzone" id="dropzone">
+      <div class="dz-icon">☁️⬆️</div>
+      <div class="dz-title">Arrastra y suelta tu Excel aquí</div>
+      <div class="dz-sub">o haz clic para buscar archivos (xlsx). Recomendado &lt; 5MB.</div>
+      <button class="btn" type="button" id="btnSelect">Select File</button>
+      <input type="file" id="fileInput" accept=".xlsx" hidden />
+      <div class="dz-meta" id="fileMeta"></div>
+      <div class="dz-error" id="fileError"></div>
+    </div>
+  </section>
+
+  <!-- STEP 3 -->
+  <section class="card">
+    <div class="card-row card-row-top">
+      <div class="step-title">Step 3: Select ID Card Design</div>
+      <div class="muted" id="tplCount">4 templates available</div>
+    </div>
+
+    <div class="tpl-grid" id="tplGrid">
+      <!-- render templates here -->
+    </div>
+  </section>
+
+  <!-- STEP 4 -->
+  <section class="card">
+    <div class="center">
+      <button class="btn primary big" id="btnGenerate" type="button" disabled>
+        Generate PDF & Print
+      </button>
+      <p class="muted small">
+        Security Notice: tus datos se procesan localmente en tu navegador. No se almacenan.
+      </p>
+    </div>
+  </section>
+
+  <!-- PREVIEW -->
+  <section class="card">
+    <div class="card-row card-row-top">
+      <div class="step-title">Preview</div>
+      <div class="muted" id="previewMeta">Sube un Excel para ver la vista previa</div>
+    </div>
+
+    <div id="previewArea" class="preview-area">
+      <!-- cards preview -->
+    </div>
+  </section>
+
+</main>
+
+<!-- PRINT AREA (solo se usa para imprimir) -->
+<div id="printRoot" class="print-root"></div>
 </body>
 </html>

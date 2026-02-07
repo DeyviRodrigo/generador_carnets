@@ -39,13 +39,12 @@ function wireButtons(){
 }
 
 function downloadTemplate(){
-  const headers = ["id", "dni", "cargo", "nombre_completo"];
-  const example = [1, "73445791", "Monitorista", "Eliseo Quenallata Sancho"];
-  const data = [headers, example];
-  const ws = XLSX.utils.aoa_to_sheet(data);
-  const wb = XLSX.utils.book_new();
-  XLSX.utils.book_append_sheet(wb, ws, "Plantilla");
-  XLSX.writeFile(wb, "template.xlsx");
+  const link = document.createElement("a");
+  link.href = "assets/plantilla.xlsx";
+  link.download = "plantilla.xlsx";
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
 }
 
 function wireDropzone(){

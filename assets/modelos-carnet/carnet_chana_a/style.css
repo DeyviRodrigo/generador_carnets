@@ -1,0 +1,153 @@
+.idcard-chana {
+  background-color: #e4dede;
+  border-color: #08355e;
+  position: relative;
+  color: #000;
+}
+
+.idcard-chana .chana-line {
+  position: absolute;
+  left: 9.3%;
+  width: 87.5%;
+  height: 2.4%;
+}
+
+.idcard-chana .chana-line-top {
+  top: 9.3%;
+}
+
+.idcard-chana .chana-line-bottom {
+  top: 91.2%;
+}
+
+.idcard-chana .chana-polygon {
+  position: absolute;
+  top: 3.7%;
+  left: 25.5%;
+  width: 24.3%;
+  height: 34.7%;
+}
+
+.idcard-chana .chana-vector {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.idcard-chana .chana-frame {
+  display: flex;
+  flex-direction: column;
+  width: 48.6%;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 12px;
+  position: absolute;
+  top: 44.9%;
+  left: 4.7%;
+  z-index: 2;
+}
+
+.idcard-chana .chana-frame-title {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.idcard-chana .chana-title,
+.idcard-chana .chana-subtitle {
+  display: flex;
+  justify-content: center;
+  font-family: "Graduate", "Inter", system-ui, sans-serif;
+  font-weight: 400;
+  color: #e4dd97;
+  font-size: 11px;
+  text-align: center;
+  line-height: 1.1;
+}
+
+.idcard-chana .chana-motto {
+  display: flex;
+  justify-content: center;
+  font-family: "Graduate", "Inter", system-ui, sans-serif;
+  font-weight: 400;
+  color: #fae05e;
+  font-size: 10px;
+  text-align: center;
+  line-height: 1.1;
+}
+
+.idcard-chana .chana-logo {
+  position: absolute;
+  top: 17.1%;
+  left: 7.5%;
+  width: 25.2%;
+  height: 19%;
+  object-fit: contain;
+  z-index: 2;
+}
+
+.idcard-chana .chana-qr {
+  position: absolute;
+  top: 48.6%;
+  left: 70.1%;
+  width: 22.4%;
+  height: 33.3%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  padding: 4px;
+  border-radius: 6px;
+  z-index: 2;
+}
+
+.idcard-chana .chana-qr img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.idcard-chana .chana-fields {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  position: absolute;
+  top: 20.4%;
+  left: 40.5%;
+  z-index: 2;
+}
+
+.idcard-chana .chana-labels {
+  display: flex;
+  flex-direction: column;
+  width: 54px;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.idcard-chana .chana-label,
+.idcard-chana .chana-value {
+  font-family: "Graduate", "Inter", system-ui, sans-serif;
+  font-size: 10px;
+  color: #000;
+  line-height: 1.1;
+}
+
+.idcard-chana .chana-values {
+  display: flex;
+  flex-direction: column;
+  width: 120px;
+  gap: 10px;
+}
+
+.idcard-chana .chana-value {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

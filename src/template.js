@@ -17,6 +17,12 @@ window.TEMPLATES = [
     render: (row) => corporateLandscape(row),
   },
   {
+    id: "carnet_chana_a",
+    name: "Carnet Chana A",
+    desc: "Modelo oficial Proyecto Minero Chana - A",
+    render: (row) => carnetChanaA(row),
+  },
+  {
     id: "minimalist",
     name: "Minimalist",
     desc: "Nombre, Cargo, QR grande",
@@ -36,6 +42,55 @@ function esc(s){
     .replaceAll("<","&lt;")
     .replaceAll(">","&gt;")
     .replaceAll('"',"&quot;");
+}
+
+/* ---------- TEMPLATE: CARNET CHANA A ---------- */
+function carnetChanaA(row){
+  return `
+  <div class="idcard idcard-chana">
+    <svg class="chana-line chana-line-top" width="282" height="6" viewBox="0 0 282 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M-1.0252e-05 2.66669C-1.01232e-05 4.13945 1.1939 5.33335 2.66666 5.33335C4.13942 5.33335 5.33332 4.13945 5.33332 2.66669C5.33332 1.19393 4.13942 2.01368e-05 2.66666 2.02656e-05C1.1939 2.03943e-05 -1.03808e-05 1.19393 -1.0252e-05 2.66669ZM276 2.66666C276 4.13942 277.194 5.33333 278.667 5.33333C280.139 5.33333 281.333 4.13942 281.333 2.66666C281.333 1.1939 280.139 -3.99186e-06 278.667 -3.86311e-06C277.194 -3.73436e-06 276 1.1939 276 2.66666ZM2.66666 2.66669L2.66666 3.16669L278.667 3.16666L278.667 2.66666L278.667 2.16666L2.66666 2.16669L2.66666 2.66669Z" fill="#08355E"/>
+    </svg>
+
+    <svg class="chana-polygon" width="78" height="75" viewBox="0 0 78 75" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M-2.24634e-08 0.0143203L77.8778 3.9449e-06L22.7175 74.5051L-2.24634e-08 0.0143203Z" fill="#08355E"/>
+    </svg>
+
+    <svg class="chana-vector" width="321" height="216" viewBox="0 0 321 216" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M32.6016 0L0 26.6087V163.304L32.6016 216H321V182.609H185.077L103.322 0H32.6016Z" fill="#11446F"/>
+    </svg>
+
+    <div class="chana-frame">
+      <div class="chana-frame-title">
+        <div class="chana-title">PROYECTO MINERO</div>
+        <div class="chana-subtitle">CHANA - A</div>
+      </div>
+      <div class="chana-motto">“CONTRUYENDO MINERIA<br />RESPONSABLE”</div>
+    </div>
+
+    <svg class="chana-line chana-line-bottom" width="282" height="6" viewBox="0 0 282 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M-1.0252e-05 2.66669C-1.01232e-05 4.13945 1.1939 5.33335 2.66666 5.33335C4.13942 5.33335 5.33332 4.13945 5.33332 2.66669C5.33332 1.19393 4.13942 2.01368e-05 2.66666 2.02656e-05C1.1939 2.03943e-05 -1.03808e-05 1.19393 -1.0252e-05 2.66669ZM276 2.66666C276 4.13942 277.194 5.33333 278.667 5.33333C280.139 5.33333 281.333 4.13942 281.333 2.66666C281.333 1.1939 280.139 -3.99186e-06 278.667 -3.86311e-06C277.194 -3.73436e-06 276 1.1939 276 2.66666ZM2.66666 2.66669L2.66666 3.16669L278.667 3.16666L278.667 2.66666L278.667 2.16666L2.66666 2.16669L2.66666 2.66669Z" fill="white"/>
+    </svg>
+
+    <img class="chana-logo" src="assets/modelos-carnet/carnet_chana_a/logo.png" alt="Logo Chana A">
+
+    <div class="chana-qr">
+      <img src="${esc(row.QR_URL)}" alt="QR">
+    </div>
+
+    <div class="chana-fields">
+      <div class="chana-labels">
+        <div class="chana-label">NOMBRE:</div>
+        <div class="chana-label">CARGO:</div>
+        <div class="chana-label">DNI:</div>
+      </div>
+      <div class="chana-values">
+        <div class="chana-value">${esc(row.NombreCompleto)}</div>
+        <div class="chana-value">${esc(row.Cargo)}</div>
+        <div class="chana-value">${esc(row.DNI)}</div>
+      </div>
+    </div>
+  </div>`;
 }
 
 /* ---------- TEMPLATE 2: TU CARNET (Landscape) ---------- */
